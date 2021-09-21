@@ -1,0 +1,31 @@
+<!--
+ * @LastEditors: 杜康
+ * @LastEditTime: 2021-09-17 20:11:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言列表</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="message">
+      <v-input v-model="username"></v-input>
+      <v-textarea v-model="message" ref="message"></v-textarea>
+      <button @click="handleSend">发布</button>
+    </div>
+    <v-list :list="list" @reply="handleReply" @delReply="delReply"></v-list>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script src="input.js"></script>
+  <script src="list.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

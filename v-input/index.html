@@ -1,0 +1,51 @@
+<!--
+ * @LastEditors: 杜康
+ * @LastEditTime: 2021-09-15 18:06:48
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-input的render实现方式</title>
+</head>
+
+<body>
+  <div id="app">
+    <ele></ele>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    Vue.component('ele', {
+      render: function (createElement) {
+        var _this = this
+        return createElement('div', [
+          createElement('input', {
+            domProps: {
+              value: this.value
+            },
+            on: {
+              input: function (e) {
+                _this.value = e.target.value
+              }
+            }
+          }),
+          createElement('p', this.value)
+        ])
+      },
+      data: function () {
+        return {
+          value: ''
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>

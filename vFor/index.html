@@ -1,0 +1,51 @@
+<!--
+ * @LastEditors: 杜康
+ * @LastEditTime: 2021-09-15 17:46:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-for的render实现方式</title>
+</head>
+
+<body>
+  <div id="app">
+    <ele :list="list" />
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    Vue.component('ele', {
+      render: function (createElement) {
+        var nodes = []
+        for (var i = 0; i < this.list.length; i++) {
+          nodes.push(createElement('p', this.list[i]))
+        }
+        return createElement('div', nodes)
+      },
+      props: {
+        list: {
+          type: Array,
+          default: function () {
+            return []
+          }
+        }
+      }
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          '《Vuejs 实战》',
+          '《Javascript 高级程序设计》',
+          '《Javascript 语言精粹》'
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

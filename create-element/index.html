@@ -1,0 +1,53 @@
+<!--
+ * @LastEditors: 杜康
+ * @LastEditTime: 2021-09-15 13:31:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用CreateElement</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <ele></ele>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    Vue.component('ele', {
+      render: function (createElement) {
+        return createElement('div', {
+          class: {
+            'show': this.show, 'hide': !this.show
+          },
+          attrs: {
+            id: 'element'
+          },
+          on: {
+            click: this.handleClick
+          }
+        }, '文本内容')
+      },
+      data: function () {
+        return {
+          show: true
+        }
+      },
+      methods: {
+        handleClick: function () {
+          console.log('clicked！')
+        }
+      }
+    })
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>

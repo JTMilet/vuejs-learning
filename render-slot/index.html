@@ -1,0 +1,40 @@
+<!--
+ * @LastEditors: 杜康
+ * @LastEditTime: 2021-09-15 18:38:38
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>render函数访问slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <ele></ele>
+    <ele>
+      <p>我是使用了slot的相同组件</p>
+    </ele>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    Vue.component('ele', {
+      render: function (createElement) {
+        if (this.$slots.default) {
+          return createElement('div', this.$slots.default)
+        } else {
+          return createElement('div', '没有使用slot才显示的文本内容')
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>
